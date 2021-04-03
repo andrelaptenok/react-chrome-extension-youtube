@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "version": "1.0.1",
+    "name": "React Chrome Extension",
+    "content_security_policy": "script-src 'self' 'sha256-xr+HqUtnq8KF3IBn+TQ37Vz0elxg11bPYmNJy5M/p38='; object-src 'self'",
+    "background": {
+        "scripts": ["background/background.js"],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_popup": "popup/popup.html"
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": [
+            "/static/js/2.chunk.js",
+            "/static/js/main.chunk.js",
+            "/static/js/runtime-main.js"
+        ]
+    }],
+    "options_page": "popup/options.html",
+    "options_ui": {
+        "chrome_style": true,
+        "page": "popup/options.html"
+    },
+    "permissions": ["activeTab", "tabs", "contextMenus"]
+}
